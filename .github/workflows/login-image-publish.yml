@@ -1,0 +1,96 @@
+name: Publish Triniprint Login Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/login/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "nx.json"
+      - ".github/workflows/login-image-publish.yml"
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Optional extra image tag to publish"
+        required: false
+        type: string
+
+concurrency:
+  group: login-image-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: "22"
+      REGISTRY: ${{ vars.LOGIN_IMAGE_REGISTRY }}
+      IMAGE_NAME: ${{ vars.LOGIN_IMAGE_NAME }}
+    steps:
+      - name: Validate registry configuration
+        run: |
+          test -n "${REGISTRY}" || { echo "Set repository variable LOGIN_IMAGE_REGISTRY"; exit 1; }
+          test -n "${IMAGE_NAME}" || { echo "Set repository variable LOGIN_IMAGE_NAME"; exit 1; }
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build login app
+        run: pnpm nx run @zitadel/login:build
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.LOGIN_IMAGE_REGISTRY_USERNAME }}
+          password: ${{ secrets.LOGIN_IMAGE_REGISTRY_PASSWORD }}
+
+      - name: Compute image reference
+        id: image
+        run: echo "ref=${REGISTRY}/${IMAGE_NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Generate Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ steps.image.outputs.ref }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
+            type=ref,event=branch
+            type=raw,value=${{ inputs.image_tag }},enable=${{ github.event_name == 'workflow_dispatch' && inputs.image_tag != '' }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: apps/login
+          file: apps/login/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

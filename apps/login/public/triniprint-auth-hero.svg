@@ -1,0 +1,28 @@
+<svg width="720" height="640" viewBox="0 0 720 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="640" rx="36" fill="url(#bg)"/>
+  <rect x="56" y="72" width="608" height="496" rx="28" fill="#0F172A" fill-opacity="0.72" stroke="#FFFFFF" stroke-opacity="0.15"/>
+  <rect x="96" y="118" width="232" height="404" rx="24" fill="#F8FAFC"/>
+  <rect x="120" y="154" width="120" height="16" rx="8" fill="#0EA5E9" fill-opacity="0.16"/>
+  <rect x="120" y="186" width="184" height="16" rx="8" fill="#CBD5E1"/>
+  <rect x="120" y="230" width="184" height="54" rx="18" fill="#E2E8F0"/>
+  <rect x="120" y="302" width="184" height="54" rx="18" fill="#E2E8F0"/>
+  <rect x="120" y="390" width="184" height="48" rx="24" fill="#0EA5E9"/>
+  <rect x="372" y="140" width="248" height="118" rx="26" fill="#F8FAFC" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <rect x="396" y="172" width="84" height="12" rx="6" fill="#67E8F9" fill-opacity="0.9"/>
+  <rect x="396" y="202" width="160" height="14" rx="7" fill="#E2E8F0" fill-opacity="0.9"/>
+  <rect x="396" y="226" width="108" height="14" rx="7" fill="#94A3B8" fill-opacity="0.8"/>
+  <rect x="372" y="282" width="248" height="118" rx="26" fill="#F8FAFC" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <path d="M410 355C437.614 355 460 332.614 460 305C460 277.386 437.614 255 410 255C382.386 255 360 277.386 360 305C360 332.614 382.386 355 410 355Z" fill="#0EA5E9" fill-opacity="0.2"/>
+  <path d="M410 333C425.464 333 438 320.464 438 305C438 289.536 425.464 277 410 277C394.536 277 382 289.536 382 305C382 320.464 394.536 333 410 333Z" fill="#38BDF8"/>
+  <rect x="470" y="300" width="118" height="12" rx="6" fill="#E2E8F0" fill-opacity="0.9"/>
+  <rect x="470" y="324" width="82" height="12" rx="6" fill="#94A3B8" fill-opacity="0.8"/>
+  <rect x="372" y="424" width="248" height="98" rx="26" fill="#F8FAFC" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <path d="M396 486C422.667 451.333 449.333 451.333 476 486C502.667 520.667 529.333 520.667 556 486C582.667 451.333 600 451.333 608 486" stroke="#67E8F9" stroke-width="14" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="32" x2="682" y2="618" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.45" stop-color="#1E3A8A"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+</svg>
