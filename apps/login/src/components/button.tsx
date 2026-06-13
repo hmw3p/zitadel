@@ -35,18 +35,18 @@ export const getButtonClasses = (
 ) =>
   clsx(
     {
-      "motion-ui inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap border font-semibold tracking-[-0.01em] outline-none active:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0":
+      "motion-ui inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap font-semibold tracking-[-0.01em] outline-none active:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0":
         true,
-      "focus-visible:border-primary-light-500 focus-visible:ring-4 focus-visible:ring-primary-light-500/25": color !== ButtonColors.Warn,
-      "focus-visible:border-warn-light-500 focus-visible:ring-4 focus-visible:ring-warn-light-500/20": color === ButtonColors.Warn,
-      "border-[#e7f7fd] bg-primary-light-500 text-[#1d1d1d] hover:border-primary-light-500 hover:bg-[#017ead]":
+      "focus-visible:ring-4 focus-visible:ring-primary-light-500/25": color !== ButtonColors.Warn,
+      "focus-visible:ring-4 focus-visible:ring-warn-light-500/20": color === ButtonColors.Warn,
+      "bg-primary-light-500 text-[#1d1d1d] drop-shadow-[0_2px_3px_rgba(29,29,29,0.12)] hover:bg-[#017ead]":
         variant === ButtonVariants.Primary && color !== ButtonColors.Warn,
-      "border-warn-light-500 bg-warn-light-500 text-white hover:bg-warn-light-500/90":
+      "bg-warn-light-500 text-white drop-shadow-[0_2px_3px_rgba(29,29,29,0.12)] hover:bg-warn-light-500/90":
         (variant === ButtonVariants.Primary && color === ButtonColors.Warn) ||
         variant === ButtonVariants.Destructive,
-      "border-[#dde6eb] bg-white text-[#1d1d1d] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]":
+      "border border-[#dde6eb] bg-white text-[#1d1d1d] drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd] focus-visible:border-primary-light-500":
         variant === ButtonVariants.Secondary,
-      "border-[#e4b5ba] bg-white text-warn-light-500 hover:bg-warn-light-500/10":
+      "border border-[#e4b5ba] bg-white text-warn-light-500 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:bg-warn-light-500/10 focus-visible:border-warn-light-500":
         color === ButtonColors.Warn && variant === ButtonVariants.Secondary,
       "h-14 px-6 text-base": size === ButtonSizes.Large,
       "h-12 px-5 text-base": size === ButtonSizes.Small && variant !== ButtonVariants.Secondary,
@@ -65,7 +65,7 @@ function getDefaultButtonRoundness(): string {
 function getDefaultButtonAppearance(): string {
   const themeConfig = getThemeConfig();
   const appearance = APPEARANCE_STYLES[themeConfig.appearance];
-  return appearance?.button || "border border-transparent shadow-[0_16px_30px_-22px_rgba(1,157,218,0.55)]";
+  return appearance?.button || "will-change-transform";
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

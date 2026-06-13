@@ -2,7 +2,7 @@
 
 import { setLanguageCookie } from "@/lib/cookies";
 import { Lang } from "@/lib/i18n";
-import { APPEARANCE_STYLES, getComponentRoundness, getThemeConfig } from "@/lib/theme";
+import { getComponentRoundness } from "@/lib/theme";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
@@ -15,17 +15,9 @@ function getLanguageSwitcherRoundness(): string {
   return getComponentRoundness("button");
 }
 
-// Helper function to get card appearance styles for the language switcher
-function getLanguageSwitcherCardAppearance(): string {
-  const themeConfig = getThemeConfig();
-  const appearance = APPEARANCE_STYLES[themeConfig.appearance];
-  return appearance?.card || "border border-[#dde6eb] bg-white";
-}
-
 export function LanguageSwitcher({ languages }: { languages: Lang[] }) {
   const currentLocale = useLocale();
   const switcherRoundness = getLanguageSwitcherRoundness();
-  const cardAppearance = getLanguageSwitcherCardAppearance();
 
   const [selected, setSelected] = useState(languages.find((l) => l.code === currentLocale) || languages[0]);
 
@@ -46,7 +38,7 @@ export function LanguageSwitcher({ languages }: { languages: Lang[] }) {
         <ListboxButton
           className={clsx(
             `relative block w-full py-1.5 pl-3 pr-8 text-left text-sm/6 text-[#1d1d1d] ${switcherRoundness}`,
-            cardAppearance,
+            "border border-[#dde6eb] bg-white drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]",
             "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-primary-light-500/25",
           )}
         >
@@ -57,7 +49,7 @@ export function LanguageSwitcher({ languages }: { languages: Lang[] }) {
           anchor="bottom"
           transition
           className={clsx(
-            "w-[var(--button-width)] rounded-md border border-[#dde6eb] bg-white p-1 shadow-[0_18px_42px_-32px_rgba(29,29,29,0.35)] [--anchor-gap:var(--spacing-1)] focus:outline-none",
+            "w-[var(--button-width)] rounded-[8px] border border-[#dde6eb] bg-white p-1 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] [--anchor-gap:var(--spacing-1)] focus:outline-none",
             "transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0",
           )}
         >

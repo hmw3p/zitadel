@@ -60,11 +60,11 @@ export default function PreviewPage() {
         </Alert>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <button className="rounded-[8px] border border-[#dde6eb] bg-white px-4 py-3 text-left text-sm font-medium text-[#1d1d1d] transition hover:border-primary-light-500/30 hover:bg-primary-light-500/5">
+          <button className="motion-ui rounded-[8px] border border-[#dde6eb] bg-white px-4 py-3 text-left text-sm font-medium text-[#1d1d1d] drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]">
             Passkey
             <span className="mt-1 block text-xs font-normal text-[#6d6d6d]">Use this device</span>
           </button>
-          <button className="rounded-[8px] border border-[#dde6eb] bg-white px-4 py-3 text-left text-sm font-medium text-[#1d1d1d] transition hover:border-primary-light-500/30 hover:bg-primary-light-500/5">
+          <button className="motion-ui rounded-[8px] border border-[#dde6eb] bg-white px-4 py-3 text-left text-sm font-medium text-[#1d1d1d] drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]">
             Authenticator
             <span className="mt-1 block text-xs font-normal text-[#6d6d6d]">Enter a 6-digit code</span>
           </button>

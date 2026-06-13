@@ -92,7 +92,7 @@ export function SessionItem({ session, reload, requestId }: { session: Session; 
               }
             }
           }}
-          className="group flex flex-row items-center rounded-[8px] border border-[#dde6eb] bg-white px-4 py-2 transition-all hover:border-primary-light-500/30 hover:shadow-[0_18px_42px_-36px_rgba(29,29,29,0.35)]"
+          className="motion-ui group flex flex-row items-center rounded-[8px] border border-[#dde6eb] bg-white px-4 py-2 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]"
         >
           <div className="pr-4">
             <Avatar

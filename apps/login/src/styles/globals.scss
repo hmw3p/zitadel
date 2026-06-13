@@ -94,7 +94,7 @@
 }
 
 .motion-ui {
-  transition-property: background-color, border-color, color, box-shadow, transform, opacity;
+  transition-property: background-color, border-color, color, box-shadow, filter, transform, opacity;
   transition-duration: var(--motion-base);
   transition-timing-function: var(--ease-standard);
 }

@@ -18,7 +18,7 @@ export type SignInWithIdentityProviderProps = DetailedHTMLProps<
 function getDefaultIdpButtonAppearance(): string {
   const themeConfig = getThemeConfig();
   const appearance = APPEARANCE_STYLES[themeConfig.appearance];
-  return appearance?.["idp-button"] || "border border-[#dde6eb]";
+  return appearance?.["idp-button"] || "will-change-transform";
 }
 
 export const BaseButton = forwardRef<HTMLButtonElement, SignInWithIdentityProviderProps>(function BaseButton(props, ref) {
@@ -34,7 +34,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, SignInWithIdentityProvid
       ref={ref}
       disabled={formStatus.pending}
       className={clsx(
-        "motion-ui flex h-11 flex-1 cursor-pointer flex-row items-center border border-[#dde6eb] bg-white px-4 text-sm font-semibold tracking-[-0.01em] text-text-light-500 outline-none hover:border-primary-light-500/35 hover:bg-[#e7f7fd] focus-visible:border-primary-light-500 focus-visible:ring-4 focus-visible:ring-primary-light-500/25 active:translate-y-px disabled:pointer-events-none disabled:opacity-50",
+        "motion-ui flex h-11 flex-1 cursor-pointer flex-row items-center border border-[#dde6eb] bg-white px-4 text-sm font-semibold tracking-[-0.01em] text-text-light-500 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] outline-none hover:border-primary-light-500/35 hover:bg-[#e7f7fd] focus-visible:border-primary-light-500 focus-visible:ring-4 focus-visible:ring-primary-light-500/25 active:translate-y-px disabled:pointer-events-none disabled:opacity-50",
         buttonRoundness,
         idpButtonAppearance,
         props.className,

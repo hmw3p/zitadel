@@ -129,22 +129,22 @@ export const SPACING_STYLES = {
 export const APPEARANCE_STYLES = {
   flat: {
     card: "border border-[#dde6eb] bg-white shadow-none",
-    button: "shadow-none",
-    "idp-button": "shadow-none",
+    button: "filter-none",
+    "idp-button": "filter-none",
     typography: "font-normal",
     background: "bg-white",
   },
   material: {
     card: "border border-[#dde6eb] bg-white shadow-[0_24px_60px_-48px_rgba(29,29,29,0.32)]",
-    button: "shadow-[0_16px_30px_-22px_rgba(1,157,218,0.25)]",
-    "idp-button": "shadow-[0_10px_22px_-18px_rgba(29,29,29,0.35)]",
+    button: "will-change-transform",
+    "idp-button": "will-change-transform",
     typography: "font-medium",
     background: "bg-white",
   },
   glass: {
     card: "backdrop-blur-md bg-white/80 border border-white/70 shadow-xl",
-    button: "backdrop-blur-sm shadow-lg",
-    "idp-button": "backdrop-blur-sm shadow-lg",
+    button: "backdrop-blur-sm will-change-transform",
+    "idp-button": "backdrop-blur-sm will-change-transform",
     typography: "font-medium",
     background: "bg-transparent",
   },

@@ -6,8 +6,8 @@ import { BadgeState, StateBadge } from "./state-badge";
 
 const cardClasses = (alreadyAdded: boolean) =>
   clsx(
-    "group relative block space-y-1.5 rounded-[8px] border border-[#dde6eb] bg-white px-5 py-3 transition-[border-color,box-shadow,background-color] duration-150",
-    alreadyAdded ? "cursor-default opacity-50" : "hover:border-primary-light-500/30 hover:shadow-[0_18px_42px_-40px_rgba(29,29,29,0.28)]",
+    "motion-ui group relative block space-y-1.5 rounded-[8px] border border-[#dde6eb] bg-white px-5 py-3 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)]",
+    alreadyAdded ? "cursor-default opacity-50" : "hover:border-primary-light-500/35 hover:bg-[#e7f7fd]",
   );
 
 const LinkWrapper = ({ alreadyAdded, children, link }: { alreadyAdded: boolean; children: ReactNode; link: string }) => {
