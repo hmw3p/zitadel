@@ -5,20 +5,27 @@ import { LanguageProvider } from "@/components/language-provider";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Skeleton } from "@/components/skeleton";
 import { ThemeProvider } from "@/components/theme-provider";
-import ThemeSwitch from "@/components/theme-switch";
 import { LANGS, getLanguage } from "@/lib/i18n";
 import { getServiceConfig } from "@/lib/service-url";
 import { getAllowedLanguages } from "@/lib/zitadel";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { Lato } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { headers } from "next/headers";
 import React, { Suspense } from "react";
 
-const lato = Lato({
-  weight: ["400", "700", "900"],
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  weight: ["600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,36 +50,32 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <html className={`${lato.className}`} suppressHydrationWarning>
+    <html className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
       <head />
-      <body>
+      <body className="bg-white text-text-light-500 antialiased">
         <ThemeProvider>
           <Tooltip.Provider>
             <Suspense
               fallback={
                 <BackgroundWrapper
-                  className={`relative flex min-h-screen flex-col justify-center bg-background-light-600 dark:bg-background-dark-600`}
+                  className="relative flex min-h-screen flex-col justify-center bg-background-light-500"
                 >
-                  <div className="relative mx-auto w-full max-w-[440px] py-8">
+                  <div className="relative mx-auto w-full max-w-[440px] px-4 py-8">
                     <Skeleton>
                       <div className="h-40"></div>
                     </Skeleton>
-                    <div className="flex flex-row items-center justify-end space-x-4 py-4">
-                      <ThemeSwitch />
-                    </div>
                   </div>
                 </BackgroundWrapper>
               }
             >
               <LanguageProvider>
                 <BackgroundWrapper
-                  className={`relative flex min-h-screen flex-col justify-center bg-background-light-600 dark:bg-background-dark-600`}
+                  className="relative flex min-h-screen flex-col justify-center bg-background-light-500"
                 >
                   <div className="relative mx-auto w-full max-w-[1100px] py-8">
                     <div>{children}</div>
-                    <div className="mx-auto flex max-w-[440px] flex-row items-center justify-end space-x-4 px-4 py-4 md:max-w-full md:px-8">
+                    <div className="mx-auto flex max-w-[440px] flex-row items-center justify-end px-4 py-4 md:max-w-full md:px-8">
                       <LanguageSwitcher languages={languages} />
-                      <ThemeSwitch />
                     </div>
                   </div>
                 </BackgroundWrapper>

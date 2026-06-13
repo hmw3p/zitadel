@@ -40,7 +40,7 @@ export const DEFAULT_THEME: ThemeConfig = {
   roundness: "mid",
   componentRoundness: DEFAULT_COMPONENT_ROUNDNESS,
   layout: "side-by-side",
-  appearance: "flat",
+  appearance: "material",
   spacing: "regular",
 };
 
@@ -84,13 +84,13 @@ export const ROUNDNESS_CLASSES = {
     themeSwitch: "rounded-none",
   },
   mid: {
-    card: "rounded-lg",
-    button: "rounded-md",
-    input: "rounded-md",
-    image: "rounded-lg",
-    avatar: "rounded-lg",
-    avatarContainer: "rounded-md",
-    themeSwitch: "rounded-md",
+    card: "rounded-[10px]",
+    button: "rounded-[7px]",
+    input: "rounded-[7px]",
+    image: "rounded-[10px]",
+    avatar: "rounded-[10px]",
+    avatarContainer: "rounded-[7px]",
+    themeSwitch: "rounded-[7px]",
   },
   full: {
     card: "rounded-3xl",
@@ -117,7 +117,7 @@ export function getComponentRoundness(componentType: keyof ComponentRoundnessCon
 export const SPACING_STYLES = {
   regular: {
     spacing: "space-y-6",
-    padding: "p-6 py-8",
+    padding: "p-6",
   },
   compact: {
     spacing: "space-y-4",
@@ -128,27 +128,24 @@ export const SPACING_STYLES = {
 // Appearance styling (complete design philosophies)
 export const APPEARANCE_STYLES = {
   flat: {
-    card: "bg-background-light-400 dark:bg-background-dark-500 border border-opacity-20 border border-black/10 dark:border-white/10",
-    button: "border border-button-light-border dark:border-button-dark-border", // No shadows for flat design
-    "idp-button": "border border-button-light-border dark:border-button-dark-border", // No shadows for flat design
+    card: "border border-[#dde6eb] bg-white shadow-none",
+    button: "shadow-none",
+    "idp-button": "shadow-none",
     typography: "font-normal",
-    background: "bg-background-light-500 dark:bg-background-dark-500", // Same as usual background
+    background: "bg-white",
   },
   material: {
-    card: "bg-background-light-400 dark:bg-background-dark-500 shadow-sm border-0",
-    button: "shadow hover:shadow-xl active:shadow-xl", // Material shadows for buttons
-    "idp-button":
-      "!bg-background-[#00000020] !dark:bg-background-[#ffffff50] transition shadow shadow-md hover:shadow-lg active:shadow-xl", // Material shadows for IDP buttons
+    card: "border border-[#dde6eb] bg-white shadow-[0_24px_60px_-48px_rgba(29,29,29,0.32)]",
+    button: "shadow-[0_16px_30px_-22px_rgba(1,157,218,0.25)]",
+    "idp-button": "shadow-[0_10px_22px_-18px_rgba(29,29,29,0.35)]",
     typography: "font-medium",
-    background: "bg-background-light-400 dark:bg-background-dark-500", // Current system (shade 400)
+    background: "bg-white",
   },
   glass: {
-    card: "backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-xl",
-    button:
-      "backdrop-blur-sm bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/20 shadow-lg hover:shadow-xl", // Glass effect for buttons
-    "idp-button":
-      "backdrop-blur-sm bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/20 shadow-lg hover:shadow-xl", // Glass effect for IDP buttons
+    card: "backdrop-blur-md bg-white/80 border border-white/70 shadow-xl",
+    button: "backdrop-blur-sm shadow-lg",
+    "idp-button": "backdrop-blur-sm shadow-lg",
     typography: "font-medium",
-    background: "bg-transparent", // Transparent background to show blur effect
+    background: "bg-transparent",
   },
 } as const;

@@ -2,7 +2,6 @@
 
 import { ColorShade, getColorHash } from "@/helpers/colors";
 import { getComponentRoundness } from "@/lib/theme";
-import { useTheme } from "next-themes";
 
 interface AvatarProps {
   name: string | null | undefined;
@@ -36,16 +35,10 @@ function getAvatarRoundness(): string {
 }
 
 export function Avatar({ size = "base", name, loginName, imageUrl, shadow }: AvatarProps) {
-  const { resolvedTheme } = useTheme();
   const credentials = getInitials(name ?? loginName, loginName);
   const avatarRoundness = getAvatarRoundness();
 
   const color: ColorShade = getColorHash(loginName);
-
-  const avatarStyleDark = {
-    backgroundColor: color[900],
-    color: color[200],
-  };
 
   const avatarStyleLight = {
     backgroundColor: color[200],
@@ -54,7 +47,7 @@ export function Avatar({ size = "base", name, loginName, imageUrl, shadow }: Ava
 
   return (
     <div
-      className={`dark:group-focus:ring-offset-blue dark:text-blue pointer-events-none flex h-full w-full flex-shrink-0 cursor-default items-center justify-center bg-primary-light-500 text-primary-light-contrast-500 transition-colors duration-200 hover:bg-primary-light-400 group-focus:outline-none group-focus:ring-2 group-focus:ring-primary-light-200 dark:bg-primary-dark-300 dark:text-primary-dark-contrast-300 hover:dark:bg-primary-dark-500 dark:group-focus:ring-primary-dark-400 ${avatarRoundness} ${
+      className={`pointer-events-none flex h-full w-full flex-shrink-0 cursor-default items-center justify-center bg-primary-light-500 text-primary-light-contrast-500 transition-colors duration-200 hover:bg-primary-light-400 group-focus:outline-none group-focus:ring-2 group-focus:ring-primary-light-200 ${avatarRoundness} ${
         shadow ? "shadow" : ""
       } ${
         size === "large"
@@ -65,14 +58,14 @@ export function Avatar({ size = "base", name, loginName, imageUrl, shadow }: Ava
               ? "!h-[32px] !w-[32px] text-[13px] font-bold"
               : "h-12 w-12"
       }`}
-      style={resolvedTheme === "light" ? avatarStyleLight : avatarStyleDark}
+      style={avatarStyleLight}
     >
       {imageUrl ? (
         <img
           height={48}
           width={48}
           alt="avatar"
-          className={`h-full w-full border border-divider-light dark:border-divider-dark ${avatarRoundness}`}
+          className={`h-full w-full border border-divider-light ${avatarRoundness}`}
           src={imageUrl}
         />
       ) : (

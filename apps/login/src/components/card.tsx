@@ -24,15 +24,14 @@ function getDefaultCardBackground(): string {
   const themeConfig = getThemeConfig();
   const appearance = APPEARANCE_STYLES[themeConfig.appearance];
 
-  // Use appearance-specific background if defined, otherwise fallback to material design (current system)
-  return appearance?.background || "bg-background-light-400 dark:bg-background-dark-500";
+  return appearance?.background || "bg-white";
 }
 
 // Helper function to get default card styling from centralized theme system
 function getDefaultCardStyling(): string {
   const themeConfig = getThemeConfig();
   const appearance = APPEARANCE_STYLES[themeConfig.appearance];
-  return appearance?.card || "shadow-sm border-0"; // Fallback to material design
+  return appearance?.card || "border border-[#dde6eb] shadow-[0_24px_60px_-48px_rgba(29,29,29,0.32)]";
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(

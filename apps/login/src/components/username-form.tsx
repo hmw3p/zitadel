@@ -115,7 +115,7 @@ export function UsernameForm({
           />
           {allowRegister && (
             <button
-              className="text-sm transition-all hover:text-primary-light-500 dark:hover:text-primary-dark-500"
+              className="text-sm transition-all hover:text-primary-light-500"
               onClick={() => {
                 const registerParams = new URLSearchParams();
                 if (organization) {

@@ -6,8 +6,8 @@ import { BadgeState, StateBadge } from "./state-badge";
 
 const cardClasses = (alreadyAdded: boolean) =>
   clsx(
-    "relative bg-background-light-400 dark:bg-background-dark-400 group block space-y-1.5 rounded-md px-5 py-3  border border-divider-light dark:border-divider-dark transition-all ",
-    alreadyAdded ? "opacity-50 cursor-default" : "hover:shadow-lg hover:dark:bg-white/10",
+    "group relative block space-y-1.5 rounded-[8px] border border-[#dde6eb] bg-white px-5 py-3 transition-[border-color,box-shadow,background-color] duration-150",
+    alreadyAdded ? "cursor-default opacity-50" : "hover:border-primary-light-500/30 hover:shadow-[0_18px_42px_-40px_rgba(29,29,29,0.28)]",
   );
 
 const LinkWrapper = ({ alreadyAdded, children, link }: { alreadyAdded: boolean; children: ReactNode; link: string }) => {
@@ -25,7 +25,7 @@ export const TOTP = (alreadyAdded: boolean, link: string) => {
     <LinkWrapper key={link} alreadyAdded={alreadyAdded} link={link}>
       <div className={clsx("flex items-center font-medium", alreadyAdded ? "opacity-50" : "")}>
         <svg
-          className="mr-4 h-8 w-8 -translate-x-[2px] transform fill-current text-black dark:text-white"
+          className="mr-4 h-8 w-8 -translate-x-[2px] transform fill-current text-[#1d1d1d]"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

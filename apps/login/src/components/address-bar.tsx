@@ -38,7 +38,7 @@ export function AddressBar({ domain }: Props) {
                     <span>
                       <span
                         key={segment}
-                        className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-800 dark:text-gray-100"
+                        className="animate-[highlight_1s_ease-in-out_1] rounded-full px-1.5 py-0.5 text-gray-800"
                       >
                         {segment}
                       </span>

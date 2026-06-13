@@ -92,7 +92,7 @@ export function SessionItem({ session, reload, requestId }: { session: Session; 
               }
             }
           }}
-          className="group flex flex-row items-center rounded-md border border-divider-light bg-background-light-400 px-4 py-2 transition-all hover:shadow-lg dark:bg-background-dark-400 dark:hover:bg-white/10"
+          className="group flex flex-row items-center rounded-[8px] border border-[#dde6eb] bg-white px-4 py-2 transition-all hover:border-primary-light-500/30 hover:shadow-[0_18px_42px_-36px_rgba(29,29,29,0.35)]"
         >
           <div className="pr-4">
             <Avatar
@@ -143,11 +143,11 @@ export function SessionItem({ session, reload, requestId }: { session: Session; 
       {valid && session.expirationDate && (
         <Tooltip.Portal>
           <Tooltip.Content
-            className="z-50 select-none rounded-md border bg-background-light-500 px-3 py-2 text-xs text-black shadow-xl dark:border-white/20 dark:bg-background-dark-500 dark:text-white"
+            className="z-50 select-none rounded-md border border-[#dde6eb] bg-white px-3 py-2 text-xs text-black shadow-xl"
             sideOffset={5}
           >
             Expires {moment(timestampDate(session.expirationDate)).fromNow()}
-            <Tooltip.Arrow className="fill-white dark:fill-white/20" />
+            <Tooltip.Arrow className="fill-white" />
           </Tooltip.Content>
         </Tooltip.Portal>
       )}

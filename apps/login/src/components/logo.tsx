@@ -6,18 +6,15 @@ type Props = {
 };
 
 export function Logo({ lightSrc, darkSrc, height = 40, width = 147.5 }: Props) {
+  const src = lightSrc || darkSrc;
+
+  if (!src) {
+    return null;
+  }
+
   return (
-    <>
-      {darkSrc && (
-        <div className="hidden dark:flex">
-          <img height={height} width={width} src={darkSrc} alt="logo" />
-        </div>
-      )}
-      {lightSrc && (
-        <div className="flex dark:hidden">
-          <img height={height} width={width} src={lightSrc} alt="logo" />
-        </div>
-      )}
-    </>
+    <div className="flex">
+      <img height={height} width={width} src={src} alt="logo" />
+    </div>
   );
 }

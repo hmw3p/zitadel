@@ -36,7 +36,7 @@ export function UserAvatar({ loginName, displayName, showDropdown, searchParams 
   }
 
   return (
-    <div className={`flex h-full flex-row items-center border p-[1px] dark:border-white/20 ${userAvatarRoundness}`}>
+    <div className={`flex h-full flex-row items-center border border-[#dde6eb] p-[1px] ${userAvatarRoundness}`}>
       <div>
         <Avatar size="small" name={displayName ?? loginName ?? ""} loginName={loginName ?? ""} />
       </div>
@@ -45,7 +45,7 @@ export function UserAvatar({ loginName, displayName, showDropdown, searchParams 
       {showDropdown && (
         <Link
           href={"/accounts?" + params}
-          className={`ml-4 mr-1 flex items-center justify-center p-1 transition-all hover:bg-black/10 dark:hover:bg-white/10 ${userAvatarRoundness}`}
+          className={`ml-4 mr-1 flex items-center justify-center p-1 transition-all hover:bg-primary-light-500/10 ${userAvatarRoundness}`}
         >
           <ChevronDownIcon className="h-4 w-4" />
         </Link>
