@@ -6,37 +6,102 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-family: var(--font-body), sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body), sans-serif;
+    color: #1d1d1d;
+  }
+
   h1,
   .ztdl-h1 {
-    @apply text-center text-2xl;
+    font-family: var(--font-heading), sans-serif;
+    @apply text-center text-2xl font-semibold tracking-[-0.03em] text-text-light-500;
   }
 
   .ztdl-p {
-    @apply text-sm text-text-light-secondary-500 dark:text-text-dark-secondary-500;
+    @apply text-sm leading-6 text-text-light-secondary-500;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  button,
+  input,
+  textarea,
+  select,
+  label {
+    font-family: var(--font-body), sans-serif;
+  }
+
+  ::selection {
+    background: rgba(1, 157, 218, 0.18);
   }
 }
 
-html {
+:root {
   --background-color: #ffffff;
-  --dark-background-color: #000000;
+  --dark-background-color: #ffffff;
+  --theme-light-primary-200: #61d2fe;
+  --theme-light-primary-300: #1abefe;
+  --theme-light-primary-400: #01b3f8;
+  --theme-light-primary-500: #019dda;
+  --theme-light-primary-600: #0187bc;
+  --theme-light-primary-contrast-200: hsla(0, 0%, 0%, 0.87);
+  --theme-light-primary-contrast-300: hsla(0, 0%, 0%, 0.87);
+  --theme-light-primary-contrast-400: hsla(0, 0%, 0%, 0.87);
+  --theme-light-primary-contrast-500: hsla(0, 0%, 0%, 0.87);
+  --theme-dark-primary-200: #61d2fe;
+  --theme-dark-primary-300: #1abefe;
+  --theme-dark-primary-400: #01b3f8;
+  --theme-dark-primary-500: #019dda;
+  --theme-dark-primary-600: #0187bc;
+  --theme-dark-primary-contrast-200: hsla(0, 0%, 0%, 0.87);
+  --theme-dark-primary-contrast-300: hsla(0, 0%, 0%, 0.87);
+  --theme-dark-primary-contrast-400: hsla(0, 0%, 0%, 0.87);
+  --theme-dark-primary-contrast-500: hsla(0, 0%, 0%, 0.87);
+  --theme-light-warn-400: #dc6760;
+  --theme-light-warn-500: #d64f47;
+  --theme-dark-warn-400: #dc6760;
+  --theme-dark-warn-500: #d64f47;
+  --theme-light-background-400: #ffffff;
+  --theme-light-background-500: #fafafa;
+  --theme-light-background-600: #ebebeb;
+  --theme-dark-background-400: #ffffff;
+  --theme-dark-background-500: #fafafa;
+  --theme-dark-background-600: #ebebeb;
+  --theme-light-text-500: #1d1d1d;
+  --theme-light-text-secondary-500: #1d1d1dc7;
+  --theme-dark-text-500: #1d1d1d;
+  --theme-dark-text-secondary-500: #1d1d1dc7;
+  --theme-light-link-500: #1d1d1d;
+  --theme-light-link-secondary-500: #1d1d1dc7;
+  --theme-dark-link-500: #1d1d1d;
+  --theme-dark-link-secondary-500: #1d1d1dc7;
+  --motion-base: 180ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
 
 .form-checkbox:checked {
   background-image: url("/checkbox.svg");
 }
 
+.motion-ui {
+  transition-property: background-color, border-color, color, box-shadow, filter, transform, opacity;
+  transition-duration: var(--motion-base);
+  transition-timing-function: var(--ease-standard);
+}
+
 .skeleton {
   --accents-2: var(--theme-light-background-400);
   --accents-1: var(--theme-light-background-500);
-
-  background-image: linear-gradient(270deg, var(--accents-1), var(--accents-2), var(--accents-2), var(--accents-1));
-  background-size: 400% 100%;
-  animation: skeleton_loading 8s ease-in-out infinite;
-}
-
-.dark .skeleton {
-  --accents-2: var(--theme-dark-background-400);
-  --accents-1: var(--theme-dark-background-500);
 
   background-image: linear-gradient(270deg, var(--accents-1), var(--accents-2), var(--accents-2), var(--accents-1));
   background-size: 400% 100%;

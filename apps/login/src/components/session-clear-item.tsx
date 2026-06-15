@@ -47,7 +47,7 @@ export function SessionClearItem({ session, reload }: { session: Session; reload
           reload();
         });
       }}
-      className="group flex flex-row items-center rounded-md border border-divider-light bg-background-light-400 px-4 py-2 transition-all hover:shadow-lg dark:bg-background-dark-400 dark:hover:bg-white/10"
+      className="motion-ui group flex flex-row items-center rounded-[8px] border border-[#dde6eb] bg-white px-4 py-2 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]"
     >
       <div className="pr-4">
         <Avatar
@@ -81,7 +81,7 @@ export function SessionClearItem({ session, reload }: { session: Session; reload
 
       <span className="flex-grow"></span>
       <div className="relative flex flex-row items-center">
-        <div className="mr-6 flex hidden items-center justify-center rounded-full bg-[#ff0000]/10 px-2 py-[2px] text-xs text-warn-light-500 transition-all group-hover:block dark:bg-[#ff0000]/10 dark:text-warn-dark-500">
+        <div className="mr-6 flex hidden items-center justify-center rounded-full bg-[#ff0000]/10 px-2 py-[2px] text-xs text-warn-light-500 transition-all group-hover:block">
           <Translated i18nKey="clear" namespace="logout" />
         </div>
 

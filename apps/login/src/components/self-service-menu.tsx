@@ -28,7 +28,7 @@ const SelfServiceItem = ({ name, link }: { name: string; link: string }) => {
     <Link
       prefetch={false}
       href={link}
-      className="group flex w-full flex-row items-center rounded-md border border-divider-light bg-background-light-400 px-4 py-2 transition-all hover:shadow-lg dark:bg-background-dark-400 dark:hover:bg-white/10"
+      className="motion-ui group flex w-full flex-row items-center rounded-[8px] border border-[#dde6eb] bg-white px-4 py-2.5 text-sm font-medium text-[#1d1d1d] drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd]"
     >
       {name}
     </Link>

@@ -1,15 +1,14 @@
 export function TriniprintWordmark({ compact = false }: { compact?: boolean }) {
   return (
     <div className="flex flex-col">
-      <span
-        className={`font-black uppercase tracking-[0.28em] text-primary-light-500 dark:text-primary-dark-500 ${compact ? "text-[0.68rem]" : "text-[0.78rem]"}`}
+      <div
+        className={`font-black uppercase leading-none tracking-[-0.08em] text-[#1d1d1d] ${compact ? "text-[1.45rem]" : "text-[1.7rem]"}`}
       >
-        Triniprint
-      </span>
-      <span
-        className={`font-semibold text-slate-900 dark:text-white ${compact ? "text-lg" : "text-2xl"}`}
-      >
-        Sign in
+        <span>TRINI</span>
+        <span className="text-primary-light-500">PRINT</span>
+      </div>
+      <span className={`mt-2 text-sm font-medium tracking-[0.12em] text-text-light-secondary-500 ${compact ? "text-xs" : "text-sm"}`}>
+        SIGN IN
       </span>
     </div>
   );

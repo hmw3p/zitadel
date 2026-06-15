@@ -35,19 +35,22 @@ export const getButtonClasses = (
 ) =>
   clsx(
     {
-      "box-border leading-36px text-14px inline-flex items-center focus:outline-none transition-colors transition-shadow duration-300": true,
-      "disabled:border-none disabled:bg-gray-300 disabled:text-gray-600 disabled:shadow-none disabled:cursor-not-allowed disabled:dark:bg-gray-700 disabled:dark:text-gray-900":
-        variant === ButtonVariants.Primary,
-      "bg-primary-light-500 dark:bg-primary-dark-500 hover:bg-primary-light-400 hover:dark:bg-primary-dark-400 text-primary-light-contrast-500 dark:text-primary-dark-contrast-500":
+      "motion-ui inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap font-semibold tracking-[-0.01em] outline-none active:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0":
+        true,
+      "focus-visible:ring-4 focus-visible:ring-primary-light-500/25": color !== ButtonColors.Warn,
+      "focus-visible:ring-4 focus-visible:ring-warn-light-500/20": color === ButtonColors.Warn,
+      "bg-primary-light-500 text-[#1d1d1d] drop-shadow-[0_2px_3px_rgba(29,29,29,0.12)] hover:bg-[#017ead]":
         variant === ButtonVariants.Primary && color !== ButtonColors.Warn,
-      "bg-warn-light-500 dark:bg-warn-dark-500 hover:bg-warn-light-400 hover:dark:bg-warn-dark-400 text-white dark:text-white":
-        variant === ButtonVariants.Primary && color === ButtonColors.Warn,
-      "border border-button-light-border dark:border-button-dark-border text-gray-950 hover:bg-gray-500 hover:bg-opacity-20 hover:dark:bg-white hover:dark:bg-opacity-10 focus:bg-gray-500 focus:bg-opacity-20 focus:dark:bg-white focus:dark:bg-opacity-10 dark:text-white disabled:text-gray-600 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent disabled:cursor-not-allowed disabled:dark:text-gray-900":
+      "bg-warn-light-500 text-white drop-shadow-[0_2px_3px_rgba(29,29,29,0.12)] hover:bg-warn-light-500/90":
+        (variant === ButtonVariants.Primary && color === ButtonColors.Warn) ||
+        variant === ButtonVariants.Destructive,
+      "border border-[#dde6eb] bg-white text-[#1d1d1d] drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:border-primary-light-500/35 hover:bg-[#e7f7fd] focus-visible:border-primary-light-500":
         variant === ButtonVariants.Secondary,
-      "border border-button-light-border dark:border-button-dark-border text-warn-light-500 dark:text-warn-dark-500 hover:bg-warn-light-500 hover:bg-opacity-10 dark:hover:bg-warn-light-500 dark:hover:bg-opacity-10 focus:bg-warn-light-500 focus:bg-opacity-20 dark:focus:bg-warn-light-500 dark:focus:bg-opacity-20":
-        color === ButtonColors.Warn && variant !== ButtonVariants.Primary,
-      "px-16 py-2": size === ButtonSizes.Large,
-      "px-4 h-[36px]": size === ButtonSizes.Small,
+      "border border-[#e4b5ba] bg-white text-warn-light-500 drop-shadow-[0_8px_8px_rgba(29,29,29,0.10)] hover:bg-warn-light-500/10 focus-visible:border-warn-light-500":
+        color === ButtonColors.Warn && variant === ButtonVariants.Secondary,
+      "h-14 px-6 text-base": size === ButtonSizes.Large,
+      "h-12 px-5 text-base": size === ButtonSizes.Small && variant !== ButtonVariants.Secondary,
+      "h-10 px-4 text-sm": size === ButtonSizes.Small && variant === ButtonVariants.Secondary,
     },
     roundnessClasses, // Apply the full roundness classes directly
     appearance, // Apply appearance-specific styling (shadows, borders, etc.)
@@ -62,7 +65,7 @@ function getDefaultButtonRoundness(): string {
 function getDefaultButtonAppearance(): string {
   const themeConfig = getThemeConfig();
   const appearance = APPEARANCE_STYLES[themeConfig.appearance];
-  return appearance?.button || "border border-button-light-border dark:border-button-dark-border"; // Fallback to flat design
+  return appearance?.button || "will-change-transform";
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -84,6 +87,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
+        data-slot="button"
         type="button"
         ref={ref}
         className={`${getButtonClasses(size, variant, color, actualRoundness, actualAppearance)} ${className}`}

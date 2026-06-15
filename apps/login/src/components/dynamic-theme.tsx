@@ -51,16 +51,16 @@ export function DynamicTheme({
             return (
               <div className="relative mx-auto w-full max-w-[1240px] px-4 py-4 lg:px-8">
                 <Card
-                  className="overflow-hidden border border-slate-200/70 bg-white/95 shadow-2xl shadow-slate-900/10 dark:border-white/10 dark:bg-slate-950/90 dark:shadow-black/20"
+                  className="overflow-hidden border border-[#dde6eb] bg-white shadow-[0_32px_80px_-56px_rgba(29,29,29,0.34)]"
                   padding="p-0"
-                  roundness="rounded-[28px]"
+                  roundness="rounded-[12px]"
                 >
                   <div className="flex min-h-[680px] items-center justify-center px-6 py-8 sm:px-10 lg:px-14 lg:py-12">
                       <div className="w-full max-w-[460px] space-y-8">
                         <div className="space-y-6">
                           <TriniprintWordmark />
                           {hasLeftRightStructure && (
-                            <div className="space-y-5 [&_h1]:text-left [&_h1]:text-4xl [&_h1]:font-semibold [&_h1]:leading-tight [&_h1]:text-slate-950 [&_h1]:dark:text-white [&_p]:text-left [&_p]:text-base [&_p]:leading-7 [&_p]:text-slate-600 [&_p]:dark:text-slate-300">
+                            <div className="space-y-4 [&_h1]:text-left [&_h1]:text-[2rem] [&_h1]:font-semibold [&_h1]:leading-tight [&_h1]:tracking-[-0.03em] [&_h1]:text-[#1d1d1d] [&_p]:text-left [&_p]:text-base [&_p]:leading-7 [&_p]:text-[#525252]">
                               {leftContent}
                             </div>
                           )}

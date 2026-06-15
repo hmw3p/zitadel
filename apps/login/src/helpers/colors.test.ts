@@ -551,11 +551,11 @@ describe("color utilities", () => {
       expect(DARK_TEXT).toMatch(/^#[0-9a-f]{6}$/i);
     });
 
-    it("should have distinct colors for light and dark themes", () => {
-      expect(PRIMARY).not.toBe(DARK_PRIMARY);
-      expect(WARN).not.toBe(DARK_WARN);
-      expect(BACKGROUND).not.toBe(DARK_BACKGROUND);
-      expect(TEXT).not.toBe(DARK_TEXT);
+    it("should use the same brand defaults for light and dark compatibility variables", () => {
+      expect(PRIMARY).toBe(DARK_PRIMARY);
+      expect(WARN).toBe(DARK_WARN);
+      expect(BACKGROUND).toBe(DARK_BACKGROUND);
+      expect(TEXT).toBe(DARK_TEXT);
     });
   });
 

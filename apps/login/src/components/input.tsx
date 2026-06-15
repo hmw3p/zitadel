@@ -21,12 +21,12 @@ export type TextInputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 const styles = (error: boolean, disabled: boolean, roundnessClasses: string = "rounded-md") =>
   clsx(
     {
-      "h-[40px] mb-[2px] p-[7px] bg-input-light-background dark:bg-input-dark-background transition-colors duration-300 grow": true,
-      "border border-input-light-border dark:border-input-dark-border hover:border-black hover:dark:border-white focus:border-primary-light-500 focus:dark:border-primary-dark-500": true,
-      "focus:outline-none focus:ring-0 text-base text-black dark:text-white placeholder:italic placeholder-gray-700 dark:placeholder-gray-700": true,
-      "border border-warn-light-500 dark:border-warn-dark-500 hover:border-warn-light-500 hover:dark:border-warn-dark-500 focus:border-warn-light-500 focus:dark:border-warn-dark-500":
+      "mb-[2px] h-[42px] grow border bg-white px-3 py-2 text-sm text-[#1d1d1d] transition-[background-color,border-color,box-shadow] duration-150": true,
+      "border-[#dde6eb] hover:border-[#c7d4dc] focus:border-primary-light-500 focus:ring-4 focus:ring-primary-light-500/15": true,
+      "placeholder:text-[#8ca0ad] focus:outline-none": true,
+      "border border-warn-light-500 hover:border-warn-light-500 focus:border-warn-light-500":
         error,
-      "pointer-events-none text-gray-500 dark:text-gray-800 border border-input-light-border dark:border-input-dark-border hover:border-light-hoverborder hover:dark:border-hoverborder cursor-default":
+      "pointer-events-none cursor-default border-[#dde6eb] bg-[#f4f7f9] text-[#8ca0ad] hover:border-[#dde6eb]":
         disabled,
     },
     roundnessClasses, // Apply the full roundness classes directly
@@ -59,8 +59,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const actualRoundness = roundness || getDefaultInputRoundness();
 
     return (
-      <label className="relative flex flex-col text-12px text-input-light-label dark:text-input-dark-label">
-        <span className={`mb-1 leading-3 ${error ? "text-warn-light-500 dark:text-warn-dark-500" : ""}`}>
+      <label className="relative flex flex-col text-12px font-medium text-text-light-secondary-500">
+        <span className={`mb-1 leading-3 ${error ? "text-warn-light-500" : ""}`}>
           {label} {required && "*"}
         </span>
         <input
@@ -80,7 +80,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         {suffix && (
           <span
             className={clsx(
-              "absolute bottom-[22px] right-[3px] z-30 translate-y-1/2 transform bg-background-light-500 p-2 dark:bg-background-dark-500",
+              "absolute bottom-[22px] right-[6px] z-30 translate-y-1/2 transform bg-white px-2 py-1 text-xs text-text-light-secondary-500",
               // Extract just the roundness part for the suffix (no padding)
               actualRoundness.split(" ")[0], // Take only the first part (rounded-full, rounded-md, etc.)
             )}
@@ -89,7 +89,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           </span>
         )}
 
-        <div className="leading-14.5px h-14.5px flex flex-row items-center text-12px text-warn-light-500 dark:text-warn-dark-500">
+        <div className="flex h-5 flex-row items-center text-12px text-warn-light-500">
           <span>{error ? error : " "}</span>
         </div>
 
